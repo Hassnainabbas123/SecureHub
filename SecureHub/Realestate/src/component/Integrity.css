@@ -1,0 +1,41 @@
+.integrity-container {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .integrity-container:hover {
+    background-color: #f0f4f8;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px);
+  }
+  
+  .integrity-container h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  
+  .integrity-container:hover h2 {
+    color: #2980b9;
+  }
+  
+  .integrity-container p {
+    font-size: 18px;
+    color: #34495e;
+    line-height: 1.8;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .integrity-container:hover p {
+    color: #2c3e50;
+  }
+  

@@ -1,0 +1,77 @@
+/* Ensure the dashboard layout takes up the full height of the viewport */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header styling */
+.dashboard-header {
+  background-color: rgb(29, 109, 54);
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+/* Sidebar navigation list */
+.sidebar nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Sidebar list items */
+.sidebar nav ul li {
+  margin: 10px 0;
+}
+
+/* Main content layout */
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Ensure no overflow in the dashboard layout */
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling for the main content */
+  box-sizing: border-box;
+}
+
+/* Specific section styling */
+.overview,
+.properties,
+.add-property {
+  margin-bottom: 20px;
+}
+
+/* Add some margin between inputs and the button */
+.add-property input {
+  margin: 10px 0;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-property button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ensure the button is clearly visible and does not overlap with footer */
+.add-property {
+  padding-bottom: 20px; /* Add padding to the bottom to prevent overlap with footer */
+}

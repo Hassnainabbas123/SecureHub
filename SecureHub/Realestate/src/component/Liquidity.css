@@ -1,0 +1,55 @@
+.liquidity-container {
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .liquidity-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .liquidity-container h2 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .liquidity-intro p {
+    font-size: 18px;
+    color: #34495e;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0 15px;
+  }
+  
+  .liquidity-benefits {
+    margin-top: 30px;
+  }
+  
+  .liquidity-benefits h3 {
+    font-size: 28px;
+    color: #2980b9;
+    margin-bottom: 15px;
+  }
+  
+  .liquidity-benefits ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  
+  .liquidity-benefits li {
+    font-size: 16px;
+    color: #34495e;
+    margin-bottom: 10px;
+  }
+  

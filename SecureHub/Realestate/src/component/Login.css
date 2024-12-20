@@ -1,0 +1,142 @@
+/* Full CSS for Login Component */
+
+/* General layout styling */
+.login-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+   
+      
+  }
+  
+  /* Left section styling */
+  .login-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Right section styling */
+  .login-right {
+    flex: 1;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Styling for MetaMask connect button */
+  .connect-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .connect-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* User type radio buttons styling */
+  .user-type-selection {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .user-type-selection label {
+    margin-right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .user-type-selection input {
+    margin-right: 5px;
+  }
+  
+  /* Wallet input styling */
+  .wallet-input {
+    margin-bottom: 20px;
+  }
+  
+  .wallet-input input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Submit button styling */
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .submit-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Wallet connected message */
+  .login p {
+    margin-top: 20px;
+    color: green;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      height: auto;
+      padding: 20px;
+    }
+  
+    .login-left, .login-right {
+      flex: none;
+      width: 100%;
+      max-width: 100%;
+      padding: 10px;
+    }
+  
+    .login-image {
+      max-height: 300px;
+      width: auto;
+      margin-bottom: 20px;
+    }
+  }
+  

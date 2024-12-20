@@ -1,0 +1,113 @@
+.vote-wrapper {
+    background-image: url('../images/voting-background.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Ensures the image covers the full screen */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the image fixed while scrolling */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensures the background covers the entire viewport height */
+    display: flex;
+    justify-content: center; /* Centers the poll container horizontally */
+    align-items: center; /* Centers the poll container vertically */
+}
+
+.poll-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px; /* Rounded corners */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #27ae60;
+}
+
+.poll {
+    margin: 20px 0;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #27ae60;
+}
+
+.options {
+    margin-top: 10px;
+}
+
+.option-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.option-container:first-child {
+    background-color: #95ef98;
+    color: #2e7d32;
+}
+
+.option-container:last-child {
+    background-color: #ffffff;
+    color: #757575;
+}
+
+input[type='radio'] {
+    margin-right: 10px;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.option-text {
+    font-size: 1rem;
+    color: inherit; /* Adjust dynamically */
+}
+
+.percentage {
+    font-size: 0.9rem;
+    color: inherit; /* Adjust dynamically */
+}
+
+.progress-bar {
+    margin-top: 5px;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #26a69a;
+}
+
+.submit-vote-button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-vote-button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.submit-vote-button:hover:not(:disabled) {
+    background-color: #00796b;
+}

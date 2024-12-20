@@ -1,0 +1,187 @@
+/* General container styles */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f8f0; /* Light green background */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #A8E6A3, #66BB6A); /* Gradient from light green to darker green */
+    color: #333;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Sidebar heading */
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: #388E3C; /* Dark green heading */
+}
+
+/* Sidebar buttons */
+.sidebar button {
+    display: block;
+    width: 100%;
+    background-color: #81C784; /* Soft green buttons */
+    color: white;
+    text-align: left;
+    padding: 10px 15px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.sidebar button:hover {
+    background-color: #66BB6A; /* Hover with darker green */
+}
+
+.sidebar button:active {
+    background-color: #388E3C; /* Active with dark green */
+}
+
+/* Main content styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* User info section */
+.user-info {
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #C8E6C9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    font-size: 1rem;
+}
+
+.user-info p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.user-info strong {
+    color: #388E3C;
+}
+
+/* Wallet container */
+.wallet-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Wallet section */
+.wallet-section {
+    background-color: #F1F8E9; /* Very light green background for wallet section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.wallet-section p {
+    margin: 12px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.wallet-section strong {
+    color: #388E3C; /* Dark green for strong text */
+}
+
+/* Mnemonic section */
+.mnemonic-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Button styles */
+.wallet-section button {
+    margin-top: 10px;
+    background-color: #66BB6A; /* Green for "Copy" button */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wallet-section button:hover {
+    background-color: #388E3C; /* Dark green on hover */
+}
+
+button.copied {
+    background-color: #66BB6A; /* Green background for "Copied" */
+    color: #ffffff;
+    cursor: default;
+}
+
+button.copied:hover {
+    background-color: #66BB6A;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .sidebar button {
+        text-align: center;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .user-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .wallet-container {
+        width: 100%;
+    }
+}

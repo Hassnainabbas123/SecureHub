@@ -1,0 +1,150 @@
+/* CreatePoll.css */
+
+/* General Layout for Poll Form */
+.poll-form-container {
+    font-family: 'Arial', sans-serif;
+    /* background: linear-gradient(135deg, #a7f3d0, #10b981); */
+    min-height: calc(100vh - 160px); /* Adjust to exclude header and footer */
+    padding: 20px 0; /* Ensure spacing from navbar and footer */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align the form at the top */
+    color: #1e293b;
+  }
+  
+  /* Poll Form Styling */
+  .poll-form {
+    background-color: #d1fae5;
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Smooth Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Form Heading */
+  .poll-form h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #065f46;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Question Textarea */
+  .poll-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #065f46;
+    background-color: #f0fdf4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    resize: none;
+  }
+  
+  .poll-form textarea:focus {
+    outline: none;
+    border: 2px solid #34d399;
+  }
+  
+  /* Options Input Fields */
+  .poll-form input[type="text"] {
+    width: 85%;
+    padding: 10px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #065f46;
+    background-color: #f0fdf4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .poll-form input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #34d399;
+  }
+  
+  /* Remove Button for Options */
+  .poll-form button[type="button"] {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .poll-form button[type="button"]:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+  }
+  
+  /* Add Option and Submit Buttons */
+  .poll-form button {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .poll-form button:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+  }
+  
+  /* Option Field Container */
+  .poll-form .option-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .poll-form {
+      padding: 20px;
+    }
+  
+    .poll-form h1 {
+      font-size: 2rem;
+    }
+  
+    .poll-form textarea,
+    .poll-form input[type="text"] {
+      font-size: 0.9rem;
+    }
+  
+    .poll-form button {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
