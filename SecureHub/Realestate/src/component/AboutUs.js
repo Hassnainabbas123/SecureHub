@@ -5,8 +5,25 @@ import aounImage from "../images/aounimage.jpeg";
 import hassnainImage from "../images/hassnainimage.jpeg";
 import Aboutpic from "../images/AboutUs.jpg";
 import missionImage from "../images/missionImage.png"; // New mission section image
+import  { useState, useEffect } from "react";
+
+import axios from "axios"; // Uncomment axios import to fetch data
 
 const AboutUs = () => {
+
+
+  const [testimonials, setTestimonials] = useState([]); // Initialize testimonials state
+
+  useEffect(() => {
+    // Fetch testimonials from the server
+    axios.get("http://localhost:5000/api/testimonials")
+      .then((response) => setTestimonials(response.data))
+      .catch((error) => {
+        console.error(error);
+        alert("Failed to load testimonials. Please try again.");
+      });
+  }, []);
+
   return (
     <div className="about-us">
       <div
@@ -120,43 +137,16 @@ const AboutUs = () => {
       </div>
 
       {/* Testimonials Section */}
-      <section className="testimonials-section">
-        <h2>Our Clients Say!</h2>
-        <p>We take pride in providing exceptional service to our clients.</p>
-
-        <div className="testimonial">
-          <p>
-            "Working with this platform was a game-changer for me. I found my
-            dream home in no time!"
-          </p>
-          <h3>- John Doe</h3>
-          <p>Property Dealer</p>
+      <h2>Our Clients Say!</h2>
+        <div className="testimonials-list">
+          {testimonials.length > 0 ? testimonials.map((testimonial) => (
+            <div key={testimonial._id} className="testimonial">
+              <p>{testimonial.message}</p>
+              <h3>- {testimonial.name}</h3>
+              <p>{testimonial.role}</p>
+            </div>
+          )) : <p>No testimonials available yet.</p>}
         </div>
-        <div className="testimonial">
-          <p>
-            "The transparency and efficiency provided by this platform made my
-            investment in real estate seamless."
-          </p>
-          <h3>- Sarah Smith</h3>
-          <p>Investor</p>
-        </div>
-        <div className="testimonial">
-          <p>
-            "Highly recommend! Their blockchain technology ensures security and
-            trust in every transaction."
-          </p>
-          <h3>- Ahmed Khan</h3>
-          <p>Home Buyer</p>
-        </div>
-        <div className="testimonial">
-          <p>
-            "Highly recommend! Their blockchain technology ensures the
-            transparency of the property."
-          </p>
-          <h3>- Majid Khan</h3>
-          <p>Home Buyer</p>
-        </div>
-      </section>
     </div>
   );
 };

@@ -6,9 +6,10 @@ import './VotePoll.css';
 
 const VotePoll = () => {
   const [polls, setPolls] = useState([]);
+  const [filteredPolls, setFilteredPolls] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [userEmail, setUserEmail] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,14 +25,13 @@ const VotePoll = () => {
 
         setUserEmail(user.email);
 
-        if (!user || !user.wallet) {
+        if (!user.wallet) {
           alert('Create a wallet first.');
           navigate('/userdashboard');
           return;
         }
 
         const res = await checkOwnership(user.email);
-
         if (!res.hasTokens) {
           alert('You must own tokens to view plot details.');
           navigate('/userdashboard');
@@ -41,7 +41,7 @@ const VotePoll = () => {
         const response = await axios.get('http://localhost:5000/api/polls/getpolls');
         if (response.data.success) {
           setPolls(response.data.polls);
-
+          setFilteredPolls(response.data.polls); // Initialize filtered polls
         } else {
           alert('Failed to fetch polls.');
         }
@@ -51,7 +51,15 @@ const VotePoll = () => {
     };
 
     fetchPolls();
-  }, []);
+  }, [navigate]);
+
+  useEffect(() => {
+    // Filter polls based on search term
+    const filtered = polls.filter((poll) =>
+      poll.question.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredPolls(filtered);
+  }, [searchTerm, polls]);
 
   const calculatePercentage = (votes, totalVotes) => {
     return totalVotes === 0 ? 0 : Math.round((votes / totalVotes) * 100);
@@ -77,13 +85,10 @@ const VotePoll = () => {
     }
 
     try {
-      const response = await axios.post(
-        `http://localhost:5000/api/polls/vote/${pollId}`,
-        {
-          selectedOption,
-          email: userEmail,
-        }
-      );
+      const response = await axios.post(`http://localhost:5000/api/polls/vote/${pollId}`, {
+        selectedOption,
+        email: userEmail,
+      });
 
       if (response.data.success) {
         alert('Vote cast successfully!');
@@ -93,7 +98,6 @@ const VotePoll = () => {
           )
         );
         navigate('/userdashboard');
-
       } else {
         alert('Failed to vote: ' + response.data.error);
       }
@@ -103,61 +107,71 @@ const VotePoll = () => {
   };
 
   return (
-    <div className="vote-wrapper"> {/* Added wrapper div */}
-      <div className="poll-container">
-        <h1>Vote on Polls</h1>
-        {polls.map((poll) => {
-          const totalVotes = poll.options.reduce((sum, option) => sum + option.votes, 0);
-          const hasVoted = poll.votedEmails.includes(userEmail);
+    <div>
+      <h1>Vote on Polls</h1>     
+      <input
+        type="text"
+        placeholder="Search polls..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
 
-          return (
-            <div key={poll._id} className="poll">
-              <h2>{poll.question}</h2>
-              <div className="options">
-                {poll.options.map((option, index) => {
-                  const percentage = calculatePercentage(option.votes, totalVotes);
-                  const isSelected = selectedOptions[poll._id] === option.text;
+      {filteredPolls.map((poll) => {
+        const totalVotes = poll.options.reduce((sum, option) => sum + option.votes, 0);
+        const hasVoted = poll.votedEmails.includes(userEmail);
 
-                  return (
-                    <div key={index} className="option-container">
-                      <input
-                        type="radio"
-                        id={`option-${poll._id}-${index}`}
-                        name={`poll-${poll._id}`}
-                        value={option.text}
-                        checked={isSelected}
-                        onChange={() => handleOptionSelect(poll._id, option.text)}
-                        disabled={hasVoted}
-                      />
-                      <label htmlFor={`option-${poll._id}-${index}`} className="option">
-                        <span className="option-text">{option.text}</span>
-                        <span className="percentage">
-                          {percentage}% ({option.votes} votes)
-                        </span>
-                      </label>
-                      <div className="progress-bar">
-                        <div
-                          className="progress"
-                          style={{
-                            width: `${percentage}%`,
-                          }}
-                        ></div>
-                      </div>
+        return (
+          <div key={poll._id} className="poll">
+            <h2>{poll.question}</h2>
+            <div className="options">
+              {poll.options.map((option, index) => {
+                const percentage = calculatePercentage(option.votes, totalVotes);
+                const isSelected = selectedOptions[poll._id] === option.text;
+
+                return (
+                  <div key={index} className="option-container">
+                    <input
+                      type="radio"
+                      id={`option-${poll._id}-${index}`}
+                      name={`poll-${poll._id}`}
+                      value={option.text}
+                      checked={isSelected}
+                      onChange={() => handleOptionSelect(poll._id, option.text)}
+                      disabled={hasVoted}
+                    />
+                    <label htmlFor={`option-${poll._id}-${index}`} className="option">
+                      <span className="option-text">{option.text}</span>
+                      <span className="percentage">
+                        {percentage}% ({option.votes} votes)
+                      </span>
+                    </label>
+                    <div className="progress-bar">
+                      <div
+                        className="progress"
+                        style={{
+                          width: `${percentage}%`,
+                        }}
+                      ></div>
                     </div>
-                  );
-                })}
-              </div>
-              <button
-                onClick={() => handleVoteSubmit(poll._id)}
-                className="submit-vote-button"
-                disabled={!selectedOptions[poll._id] || hasVoted}
-              >
-                {hasVoted ? 'Already Voted' : 'Submit Vote'}
-              </button>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+            <button
+              onClick={() => handleVoteSubmit(poll._id)}
+       
+       className="submit-vote-button"
+              disabled={!selectedOptions[poll._id] || hasVoted}
+            >
+              {hasVoted ? 'Already Voted' : 'Submit Vote'}
+            </button>
+          </div>
+        );
+      })}
+
+<button onClick={() => navigate('/userdashboard')}>Go to Dashboard</button>
+
     </div>
   );
 };

@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Poll = require("../models/Poll");
 const User = require("../models/user"); // Import the User model
 
+
+
+
+
+
 exports.voteOnPoll = async (req, res) => {
   const pollId = req.params.id;
   const { selectedOption, email } = req.body;
@@ -70,6 +75,20 @@ exports.createPoll = async (req, res) => {
 exports.getAllPolls = async (req, res) => {
   try {
     const polls = await Poll.find();
+    res.json({ success: true, polls });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch polls" });
+  }
+};
+
+
+// Ensure the getPollsByUser function is defined
+exports.getPollsByUser = async (req, res) => {
+  const { email } = req.params; // Email of the logged-in user
+
+  try {
+    // Find polls created by the user
+    const polls = await Poll.find({ creatorEmail: email });
     res.json({ success: true, polls });
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch polls" });

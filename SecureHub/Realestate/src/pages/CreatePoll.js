@@ -109,7 +109,8 @@ const CreatePoll = () => {
           Add Option
         </button>
         <button type="submit">Create Poll</button>
-      </form>
+        <button onClick={() => navigate('/userdashboard')}>Go to Dashboard</button>
+        </form>
     </div>
   );
 };

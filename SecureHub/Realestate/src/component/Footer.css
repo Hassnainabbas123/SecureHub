@@ -26,7 +26,13 @@
   justify-content: center;
   text-transform: uppercase;
   font-size: 14px;
+  color: white;
 }
+.map-section h2 {
+  font-size: 18px; /* Reduced font size */
+  color: white; /* Ensures the color is white */
+}
+
 
 #map {
   width: 100%;

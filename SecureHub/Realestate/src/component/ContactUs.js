@@ -10,6 +10,9 @@ const ContactUs = () => {
     message: ''
   });
 
+  const [statusMessage, setStatusMessage] = useState(''); // To show success or error messages
+  const [loading, setLoading] = useState(false); // To show a loading indicator during form submission
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,9 +23,11 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
+    setStatusMessage(''); // Reset previous status message
+    setLoading(true); // Start loading
 
     try {
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch('http://localhost:5000/api/contact', { // Corrected URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -31,15 +36,18 @@ const ContactUs = () => {
       });
 
       const data = await response.json();
+
       if (response.ok) {
-        alert('Message sent successfully!');
+        setStatusMessage('Message sent successfully!');
         setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
       } else {
-        alert(data.message);
+        setStatusMessage(data.message || 'There was an error sending your message.');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('There was an error sending your message.');
+      setStatusMessage('There was an error sending your message.');
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -56,19 +64,54 @@ const ContactUs = () => {
 
         <form className="contact-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" placeholder="Your name.." value={formData.name} onChange={handleChange} required />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name.."
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
 
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Your email.." value={formData.email} onChange={handleChange} required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email.."
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
 
           <label htmlFor="subject">Subject:</label>
-          <input type="text" id="subject" name="subject" placeholder="Subject.." value={formData.subject} onChange={handleChange} required />
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Subject.."
+            value={formData.subject}
+            onChange={handleChange}
+            required
+          />
 
           <label htmlFor="message">Message:</label>
-          <textarea id="message" name="message" placeholder="Write your message.." value={formData.message} onChange={handleChange} required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message.."
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
 
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
         </form>
+
+        {statusMessage && <p className="status-message">{statusMessage}</p>}
       </div>
     </div>
   );

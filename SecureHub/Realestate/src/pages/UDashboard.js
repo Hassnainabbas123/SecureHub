@@ -110,6 +110,9 @@ const UserDashboard = () => {
         <button onClick={() => navigate("/polls")}>
           <FaPoll style={{ marginRight: "10px" }} /> Vote Poll
         </button>
+        <button onClick={() => navigate('/Mypolls')}>
+  <FaPoll style={{ marginRight: '10px' }} /> My Polls
+</button>
         <button onClick={() => navigate("/plots")}>
           <FaHome style={{ marginRight: "10px" }} /> Plot Details
         </button>

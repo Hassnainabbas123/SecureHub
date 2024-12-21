@@ -30,16 +30,19 @@ const Navbar = () => {
             <li><Link to="/transparency">Transparency</Link></li>
             <li><Link to="/Construction">Construction</Link></li>
             <li><Link to="/Fractional">Payment</Link></li>
+            <li><Link to="/Testimonials">Testimonials</Link></li>
           </ul>
         </li>
         <li><Link to="/aboutus">About Us</Link></li>
         <li><Link to="/contact">Contact Us</Link></li>
+      
       </ul>
 
       {/* Login and Signup Buttons */}
       <div className="navbar-buttons">
         <Link to="/login" className="login-button">Log In</Link>
         <Link to="/signup" className="signup-button">Sign Up</Link>
+
       </div>
     </nav>
   );

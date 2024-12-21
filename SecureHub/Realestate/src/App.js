@@ -36,11 +36,13 @@ import Payments from './pages/Payment/Payment';
 import SuccessPage from './pages/Success';
 import SocietyOwnerDashboard from './pages/SoceityOwnerDashboard';
 
+import Testimonials from './component/Testimonials';
 
-
+// import Mypool from './pages/Mypool';
 import SubmitProposal from './pages/SubmitProposal';
 import MyProposals from './pages/MyProposals';
 import AddComments from './pages/CommentOnProposals';
+import MyPolls from './pages/MyPolls';
 
 
 const ProtectedRoute = ({ children, isAuthenticated }) => {
@@ -87,7 +89,8 @@ function App() {
           <Route path="/addplots" element={<AddPlots />} />
           <Route path="/showaddedplots" element={<ShowAddedPlots />} />
           <Route path="/owner" element={<Owner />} />
-
+          <Route path="/Testimonials" element={<Testimonials />} />
+          <Route path="/Mypolls" element={<MyPolls />} /> 
          
 <Route path="/submit-proposal" element={<SubmitProposal />} />
 <Route path="/my-proposals" element={<MyProposals />} />
