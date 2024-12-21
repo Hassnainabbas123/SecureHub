@@ -104,12 +104,16 @@
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .wallet-section p {
     margin: 12px 0;
     font-size: 1rem;
     color: #333;
+    text-align: center;
 }
 
 .wallet-section strong {
@@ -133,6 +137,8 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: block; /* Ensure button is block-level */
+    align-self: center; /* Center the button */
 }
 
 .wallet-section button:hover {

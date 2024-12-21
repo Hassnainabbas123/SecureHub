@@ -9,10 +9,10 @@ import {
   FaSignOutAlt,
   FaClipboard,
   FaClipboardCheck,
-  FaHome
+  FaHome,
 } from "react-icons/fa";
 import "./UDashboard.css";
-import walletBackground from "../images/wallet-background.jpg"; 
+import walletBackground from "../images/wallet-background.jpg";
 
 const UserDashboard = () => {
   const [user, setUser] = useState(null);
@@ -38,6 +38,11 @@ const UserDashboard = () => {
 
   const handleCreateWallet = async () => {
     try {
+      if (wallet) {
+        alert("You have already created a wallet.");
+        return;
+      }
+
       const data = await createWallet(user.email);
       const updatedWallet = data.wallet;
 
@@ -84,9 +89,17 @@ const UserDashboard = () => {
   return (
     <div className="dashboard-wrapper">
       <div className="sidebar">
-        <h2>Welcome to Dashboard</h2>
-        <button onClick={handleCreateWallet}>
-          <FaWallet style={{ marginRight: "10px" }} /> Create Wallet
+        <h2>Welcome to User Dashboard</h2>
+        <button
+          onClick={handleCreateWallet}
+          style={{
+            opacity: wallet ? 0.5 : 1,
+            cursor: wallet ? "not-allowed" : "pointer",
+          }}
+          disabled={!!wallet}
+        >
+          <FaWallet style={{ marginRight: "10px" }} />
+          {wallet ? "Wallet Already Created" : "Create Wallet"}
         </button>
         <button onClick={handleBuyTokens}>
           <FaCoins style={{ marginRight: "10px" }} /> {status}
@@ -105,11 +118,14 @@ const UserDashboard = () => {
         </button>
       </div>
 
-      <div className="main-content"style={{
-            backgroundImage: `url(${walletBackground})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}>
+      <div
+        className="main-content"
+        style={{
+          backgroundImage: `url(${walletBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         {error && <p className="error-message">{error}</p>}
 
         {user && (
@@ -124,9 +140,8 @@ const UserDashboard = () => {
         )}
 
         {wallet && (
-          <div className="wallet-container" >
-            <div
-              className="wallet-section">
+          <div className="wallet-container">
+            <div className="wallet-section">
               <p>
                 <strong>Wallet Public Key:</strong> {wallet.publicKey}
                 <button
