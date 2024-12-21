@@ -32,9 +32,9 @@
   text-decoration: none; /* Remove underline */
   font-size: 1.8rem; /* Match the text size */
   font-weight: bold; /* Bold text */
-  /* margin-right: 2rem; */
 }
-.title-link:hover{
+
+.title-link:hover {
   color: #2ecc71;
 }
 
@@ -42,7 +42,7 @@
   list-style: none;
   display: flex;
   gap: 2rem;
-  align-items:center;
+  align-items: center;
   flex-grow: 1;
   justify-content: center; /* Center links in navbar */
   flex-wrap: nowrap; /* Ensure links stay on one line */
@@ -121,10 +121,6 @@
   z-index: 1000; /* Ensure dropdown is above other content */
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block; /* Show dropdown on hover */
-}
-
 .dropdown-menu li {
   list-style: none; /* Remove default list style */
 }
@@ -139,6 +135,11 @@
 .dropdown-menu a:hover {
   background-color: #2ecc71; /* Light green background for dropdown items on hover */
   color: #ffffff; /* Change text color on hover */
+}
+
+/* Ensure dropdown menus appear below the link */
+.dropdown:hover .dropdown-menu {
+  display: block; /* Show dropdown on hover */
 }
 
 /* Responsive Design */
