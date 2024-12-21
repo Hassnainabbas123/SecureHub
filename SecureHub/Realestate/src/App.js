@@ -17,6 +17,8 @@ import Passport from './component/Passport';
 import Transparency from './component/Transparency';
 import PropertyOwnerPage from './Propertyownerdashboard/Owner';
 import Owner from './Propertyownerdashboard/Owner';
+import AddPlots from './pages/AddPlots';
+import ShowAddedPlots from './pages/ShowAddedPlots';
 
 import './App.css';
 
@@ -33,6 +35,9 @@ import VotePoll from './pages/VotePoll';
 import Payments from './pages/Payment/Payment';
 import SuccessPage from './pages/Success';
 import SocietyOwnerDashboard from './pages/SoceityOwnerDashboard';
+
+
+
 import SubmitProposal from './pages/SubmitProposal';
 import MyProposals from './pages/MyProposals';
 import AddComments from './pages/CommentOnProposals';
@@ -79,6 +84,8 @@ function App() {
           <Route path="/userdashboard" element={<UserDashboard />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/society-owner-dashboard" element={<SocietyOwnerDashboard />} />
+          <Route path="/addplots" element={<AddPlots />} />
+          <Route path="/showaddedplots" element={<ShowAddedPlots />} />
           <Route path="/owner" element={<Owner />} />
 
          

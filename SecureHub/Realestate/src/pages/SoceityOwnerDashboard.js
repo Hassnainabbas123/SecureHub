@@ -1,95 +1,80 @@
-import React, { useState } from 'react';
-import { addPlot } from '../services/plot';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SocietyOwnerDashboard = () => {
-  const [status, setStatus] = useState("Add Plot");
-  const [newPlot, setNewPlot] = useState({
-    size: '',
-    location: '',
-    electricityAvailable: false,
-    ownerName: '',
-    societyId: '',
-    owner: '',
-  });
+  const navigate = useNavigate();
 
-  const handleAddPlot = async (e) => {
-    e.preventDefault();
-    setStatus("Adding...");
-    try {
-      await addPlot(newPlot);
-      alert('Plot added successfully!');
-      setStatus("Add Plot");
-      setNewPlot({
-        size: '',
-        location: '',
-        electricityAvailable: false,
-        ownerName: '',
-        societyId: '',
-        owner: '',
-      });
-    } catch (error) {
-      console.error('Error adding plot:', error);
-      setStatus("Add Plot");
-    }
+  // Handle logout function
+  const handleLogout = () => {
+    // Remove the auth token or user data from localStorage or sessionStorage
+    localStorage.removeItem('user'); // Assuming the user data is stored here
+    // If you're using sessionStorage, you can do the same with sessionStorage.removeItem('user');
+
+    // Redirect to login page
+    navigate("/login");
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Society Owner Dashboard</h1>
-      <h2>Add Plot</h2>
-      <form onSubmit={handleAddPlot}>
-        <input
-          type="text"
-          placeholder="Size"
-          value={newPlot.size}
-          onChange={(e) => setNewPlot({ ...newPlot, size: e.target.value })}
-          required
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Location"
-          value={newPlot.location}
-          onChange={(e) => setNewPlot({ ...newPlot, location: e.target.value })}
-          required
-        />
-        <label>
-          Electricity Available:
-          <input
-            type="checkbox"
-            checked={newPlot.electricityAvailable}
-            onChange={(e) =>
-              setNewPlot({ ...newPlot, electricityAvailable: e.target.checked })
-            }
-          />
-        </label>
-        <br />
-        <input
-          type="text"
-          placeholder="Owner Name"
-          value={newPlot.ownerName}
-          onChange={(e) => setNewPlot({ ...newPlot, ownerName: e.target.value })}
-          required
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Society ID"
-          value={newPlot.societyId}
-          onChange={(e) => setNewPlot({ ...newPlot, societyId: e.target.value })}
-          required
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Owner Address"
-          value={newPlot.owner}
-          onChange={(e) => setNewPlot({ ...newPlot, owner: e.target.value })}
-          required
-        />
-        <br />
-        <button type="submit">{status}</button>
-      </form>
+    <div style={{ display: "flex", height: "100vh" }}>
+      {/* Sidebar */}
+      <div
+        style={{
+          width: "250px",
+          backgroundColor: "#004d00",
+          color: "#fff",
+          padding: "20px",
+          boxSizing: "border-box",
+        }}
+      >
+        <h2 style={{ color: "#fff", textAlign: "center" }}>Dashboard</h2>
+        <ul style={{ listStyle: "none", padding: 0, marginTop: "20px" }}>
+          <li
+            style={{
+              margin: "15px 0",
+              padding: "10px",
+              backgroundColor: "#006600",
+              borderRadius: "5px",
+              textAlign: "center",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/addplots")} // Navigate to AddPlots
+          >
+            Add Plot
+          </li>
+          <li
+            style={{
+              margin: "15px 0",
+              padding: "10px",
+              backgroundColor: "#006600",
+              borderRadius: "5px",
+              textAlign: "center",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/showaddedplots")} // Navigate to Show Added Plots
+          >
+            Show Added Plots
+          </li>
+          <li
+            style={{
+              margin: "15px 0",
+              padding: "10px",
+              backgroundColor: "#006600",
+              borderRadius: "5px",
+              textAlign: "center",
+              cursor: "pointer",
+            }}
+            onClick={handleLogout} // Logout functionality
+          >
+            Logout
+          </li>
+        </ul>
+      </div>
+
+      {/* Main Content */}
+      <div style={{ flex: 1, padding: "20px" }}>
+        <h1>Welcome to the Society Owner Dashboard</h1>
+        <p>Select an option from the menu.</p>
+      </div>
     </div>
   );
 };

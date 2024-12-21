@@ -1,4 +1,3 @@
-// CreatePoll.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { checkOwnership } from '../services/plot';
@@ -40,6 +39,9 @@ const CreatePoll = () => {
         alert('Poll created successfully!');
         setQuestion('');
         setOptions(['', '']);
+
+        // Redirect to user dashboard after successful poll creation
+        navigate('/userdashboard');
       } else {
         alert('Failed to create poll: ' + response.data.error);
       }

@@ -112,6 +112,8 @@ const SocietyPlots = () => {
           )}
         </tbody>
       </table>
+      <button onClick={() => navigate('/userdashboard')}>Back to Dashboard</button>
+
     </div>
   );
 };

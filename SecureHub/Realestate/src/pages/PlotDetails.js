@@ -58,6 +58,7 @@ const PlotDetails = () => {
       ) : (
         <p>Loading...</p>
       )}
+      <button onClick={() => navigate('/userdashboard')}>Back to Dashboard</button>
     </div>
   );
 };

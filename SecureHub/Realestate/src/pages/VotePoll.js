@@ -41,6 +41,7 @@ const VotePoll = () => {
         const response = await axios.get('http://localhost:5000/api/polls/getpolls');
         if (response.data.success) {
           setPolls(response.data.polls);
+
         } else {
           alert('Failed to fetch polls.');
         }
@@ -91,6 +92,8 @@ const VotePoll = () => {
             poll._id === pollId ? { ...poll, options: response.data.updatedPoll.options } : poll
           )
         );
+        navigate('/userdashboard');
+
       } else {
         alert('Failed to vote: ' + response.data.error);
       }
