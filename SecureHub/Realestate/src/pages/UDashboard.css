@@ -114,22 +114,19 @@
     font-size: 1rem;
     color: #333;
     text-align: center;
+    word-break: break-word; /* Ensure long text doesn't overflow */
 }
 
-.wallet-section strong {
-    color: #388E3C; /* Dark green for strong text */
-}
-
-/* Mnemonic section */
-.mnemonic-section {
+/* Mnemonic and key sections are centered */
+.wallet-section p {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 /* Button styles */
 .wallet-section button {
-    margin-top: 10px;
+    margin: 10px auto 0; /* Center button horizontally */
     background-color: #66BB6A; /* Green for "Copy" button */
     color: white;
     padding: 8px 15px;
@@ -137,10 +134,10 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: block; /* Ensure button is block-level */
-    align-self: center; /* Center the button */
+    display: block;
 }
 
+/* Button hover effect */
 .wallet-section button:hover {
     background-color: #388E3C; /* Dark green on hover */
 }
