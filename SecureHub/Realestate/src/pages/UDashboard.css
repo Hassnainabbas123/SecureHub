@@ -2,14 +2,14 @@
 .dashboard-wrapper {
     display: flex;
     min-height: 100vh;
-    background-color: #f0f8f0; /* Light green background */
+    background-color: #f0f8f0; 
     font-family: 'Arial', sans-serif;
 }
 
 /* Sidebar styles */
 .sidebar {
     width: 250px;
-    background: linear-gradient(135deg, #A8E6A3, #66BB6A); /* Gradient from light green to darker green */
+    background: linear-gradient(135deg, #A8E6A3, #66BB6A); 
     color: #333;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);

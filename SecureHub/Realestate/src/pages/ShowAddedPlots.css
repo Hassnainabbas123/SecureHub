@@ -1,0 +1,51 @@
+.show-plots-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .show-plots-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .show-plots-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .show-plots-table th,
+  .show-plots-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .show-plots-table th {
+    background-color: #004d00;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .show-plots-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .show-plots-table tr:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .show-plots-no-data {
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  

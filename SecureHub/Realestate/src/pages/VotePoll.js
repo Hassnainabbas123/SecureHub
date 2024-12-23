@@ -121,6 +121,10 @@ const VotePoll = () => {
         const totalVotes = poll.options.reduce((sum, option) => sum + option.votes, 0);
         const hasVoted = poll.votedEmails.includes(userEmail);
 
+        // Determine the option with the most votes
+        const maxVotes = Math.max(...poll.options.map((option) => option.votes));
+        const maxVoteOptions = poll.options.filter((option) => option.votes === maxVotes);
+
         return (
           <div key={poll._id} className="poll">
             <h2>{poll.question}</h2>
@@ -128,9 +132,13 @@ const VotePoll = () => {
               {poll.options.map((option, index) => {
                 const percentage = calculatePercentage(option.votes, totalVotes);
                 const isSelected = selectedOptions[poll._id] === option.text;
+                const isMostVoted = maxVoteOptions.length === 1 && option.votes === maxVotes;
 
                 return (
-                  <div key={index} className="option-container">
+                  <div
+                    key={index}
+                    className={`option-container ${isMostVoted ? 'most-votes' : ''}`}
+                  >
                     <input
                       type="radio"
                       id={`option-${poll._id}-${index}`}
@@ -160,8 +168,7 @@ const VotePoll = () => {
             </div>
             <button
               onClick={() => handleVoteSubmit(poll._id)}
-       
-       className="submit-vote-button"
+              className="submit-vote-button"
               disabled={!selectedOptions[poll._id] || hasVoted}
             >
               {hasVoted ? 'Already Voted' : 'Submit Vote'}
@@ -170,8 +177,7 @@ const VotePoll = () => {
         );
       })}
 
-<button onClick={() => navigate('/userdashboard')}>Go to Dashboard</button>
-
+      <button onClick={() => navigate('/userdashboard')}>Go to Dashboard</button>
     </div>
   );
 };

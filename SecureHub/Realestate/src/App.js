@@ -43,6 +43,11 @@ import SubmitProposal from './pages/SubmitProposal';
 import MyProposals from './pages/MyProposals';
 import AddComments from './pages/CommentOnProposals';
 import MyPolls from './pages/MyPolls';
+import Transactions from './pages/Transaction';
+import RecentTransactions from './pages/RecentTransactions';
+import Feedbacks from './pages/Feedback';
+import AdminStats from './pages/AdminStats';
+
 
 
 const ProtectedRoute = ({ children, isAuthenticated }) => {
@@ -91,6 +96,10 @@ function App() {
           <Route path="/owner" element={<Owner />} />
           <Route path="/Testimonials" element={<Testimonials />} />
           <Route path="/Mypolls" element={<MyPolls />} /> 
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/recenttransactions" element={<RecentTransactions />} />
+          <Route path="/feedback" element={<Feedbacks />} />
+          <Route path="/adminstats" element={<AdminStats />} />
          
 <Route path="/submit-proposal" element={<SubmitProposal />} />
 <Route path="/my-proposals" element={<MyProposals />} />

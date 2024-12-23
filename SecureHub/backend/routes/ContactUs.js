@@ -26,4 +26,17 @@ router.post('/contact', async (req, res) => {
   }
 });
 
+// Route to fetch all feedbacks
+// Backend code
+router.get('/feedbacks', async (req, res) => {
+  try {
+    const feedbacks = await Contact.find();  // Fetch all feedbacks
+    res.status(200).json(feedbacks);  // Send feedbacks as a response
+  } catch (error) {
+    console.error('Error fetching feedbacks:', error);
+    res.status(500).json({ message: 'There was an error fetching feedbacks.' });
+  }
+});
+
+
 module.exports = router;

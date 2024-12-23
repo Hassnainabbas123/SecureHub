@@ -1,125 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import { getTokenTransactions } from '../services/token';
-import { addPlot } from '../services/plot';
-import { set } from 'mongoose';
+import React, { useState } from 'react';
+import './AdminDashboard.css';
+import Transactions from './Transaction';
+import RecentTransactions from './RecentTransactions';
+import AdminStats from './AdminStats';
+import Feedbacks from './Feedback';
 
-const AdminDashboard = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [status, setStatus] = useState("Add Plot");
-  const [newPlot, setNewPlot] = useState({
-    size: '',
-    location: '',
-    electricityAvailable: false,
-    ownerName: '',
-    societyId: '',
-    owner: '',
-  });
+const AdminPanel = () => {
+  const [selectedOption, setSelectedOption] = useState(''); // State to track selected component
 
-  const fetchTransactions = async () => {
-    try {
-      const data = await getTokenTransactions();
-      setTransactions(data);
-    } catch (error) {
-      console.error('Error fetching transactions:', error);
-    }
-  };
-
-  const handleAddPlot = async (e) => {
-    e.preventDefault();
-    setStatus("Adding....")
-    try {
-      await addPlot(newPlot);
-      alert('Plot added successfully!');
-      setStatus("Add Plot")
-    } catch (error) {
-      console.error('Error adding plot:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
-
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+  }; 
+  
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Admin Dashboard</h1>
-      <h2>Add Plot</h2>
-      <form onSubmit={handleAddPlot}>
-        <input
-          type="text"
-          placeholder="Size"
-          value={newPlot.size}
-          onChange={(e) => setNewPlot({ ...newPlot, size: e.target.value })}
-          required
-        />
-        <br/>
-        <input
-          type="text"
-          placeholder="Location"
-          value={newPlot.location}
-          onChange={(e) => setNewPlot({ ...newPlot, location: e.target.value })}
-          required
-        />
-       
-         <label>Electricity Available</label>
-        <input
-          type="checkbox"
-          checked={newPlot.electricityAvailable}
-          onChange={(e) =>
-            setNewPlot({ ...newPlot, electricityAvailable: e.target.checked })
-          }
-        />
-      
-        <br/>
-        <input
-          type="text"
-          placeholder="Owner Name"
-          value={newPlot.ownerName}
-          onChange={(e) => setNewPlot({ ...newPlot, ownerName: e.target.value })}
-          required
-        />
-           <br/>
-        <input
-          type="text"
-          placeholder="Society ID"
-          value={newPlot.societyId}
-          onChange={(e) => setNewPlot({ ...newPlot, societyId: e.target.value })}
-          required
-        />
-           <br/>
-        <input
-          type="text"
-          placeholder="Owner Address"
-          value={newPlot.owner}
-          onChange={(e) => setNewPlot({ ...newPlot, owner: e.target.value })}
-          required
-        />
-           <br/>
-        <button type="submit"> {status}</button>
-      </form>
-      <h2>Token Transactions</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Timestamp</th>
-            <th>Amount</th>
-            <th>User</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction, index) => (
-            <tr key={index}>
-              <td>{transaction.timestamp}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.user}</td>
-              <td>{transaction.action}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="admin-panel">
+      {/* Sidebar */}
+      <div className="admin-sidebar">
+        <div>
+          <h2>Admin Dashboard</h2>
+          <button onClick={() => handleOptionClick('transactions')} className="admin-sidebar-button">
+            Transactions
+          </button>
+          <button onClick={() => handleOptionClick('recentTransactions')} className="admin-sidebar-button">
+            Recent Transactions
+          </button>
+          <button onClick={() => handleOptionClick('stats')} className="admin-sidebar-button">
+            States
+          </button>
+          <button onClick={() => handleOptionClick('feedback')} className="admin-sidebar-button">
+            Feedback
+          </button>
+          <button onClick={() => console.log('Logout')} className="admin-sidebar-button">
+            Logout
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="admin-main-content">
+        {selectedOption === 'transactions' && <Transactions />}
+        {selectedOption === 'recentTransactions' && <RecentTransactions />}
+        {selectedOption === 'stats' && <AdminStats />}
+        {selectedOption === 'feedback' && <Feedbacks />}
+        {!selectedOption && <h2>Select an option from the sidebar</h2>}
+      </div>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default AdminPanel;

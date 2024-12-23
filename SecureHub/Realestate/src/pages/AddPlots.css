@@ -1,0 +1,67 @@
+.add-plot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Light gray background for a clean look */
+  }
+  
+  .add-plot-form {
+    width: 400px;
+    background-color: #ffffff; /* White card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .add-plot-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .add-plot-form input[type="text"],
+  .add-plot-form input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .add-plot-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .add-plot-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #004d00; /* Deep green */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-plot-form button:hover {
+    background-color: #006600; /* Lighter green on hover */
+  }
+  
+  .add-plot-form input[type="checkbox"] {
+    width: auto;
+    margin-left: 10px;
+  }
+  
+  .add-plot-form input::placeholder {
+    font-style: italic;
+    color: #aaa;
+  }
+  

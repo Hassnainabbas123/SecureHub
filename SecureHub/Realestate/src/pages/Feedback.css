@@ -1,0 +1,98 @@
+.feedbacks-container {
+  background-color: transparent;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.feedbacks-title {
+  text-align: center;
+  color: #27ae60;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.feedbacks-list {
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping of feedback items */
+  gap: 20px; /* Increased gap between feedback items */
+  justify-content: space-between; /* Evenly spaces the items */
+}
+
+.feedback-item {
+  background-color: transparent;
+  border-radius: 20px; 
+  padding: 20px;
+  width: 300px; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column; /* Ensure text content is arranged vertically */
+  height: auto; /* Let the height adjust according to content */
+}
+
+.feedback-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2980b9;
+  margin-bottom: 10px;
+  white-space: normal; /* Allows the name to wrap to the next line if needed */
+  overflow: visible; /* Ensures no content is hidden */
+  text-overflow: unset; /* Removes ellipsis effect */
+  text-align: center; /* Centers the name */
+}
+
+.message {
+  font-size: 1rem;
+  color: #34495e;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.info {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  text-align: right;
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+  .feedbacks-container {
+    padding: 15px;
+  }
+
+  .feedbacks-title {
+    font-size: 1.5rem;
+  }
+
+  .feedback-item {
+    padding: 15px;
+    width: calc(50% - 20px); /* On smaller screens, show 2 feedbacks per row */
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+  }
+
+  .info {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-item {
+    width: calc(100% - 20px); /* On very small screens, show 1 feedback per row */
+  }
+}

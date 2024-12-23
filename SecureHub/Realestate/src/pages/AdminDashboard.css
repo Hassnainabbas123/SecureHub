@@ -1,0 +1,50 @@
+.admin-panel {
+   display: flex;
+  height: 100vh;
+}
+.admin-sidebar {
+    width: 250px;
+    background-color: #004d00; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: none;
+}
+
+.admin-sidebar:hover {
+    background-color: #004d00; 
+}
+
+
+.admin-sidebar h2 {
+    margin-bottom: 20px;
+  font-size: 1.5em;
+  color: white;
+}
+
+.admin-sidebar-button {
+    width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.admin-sidebar-button:hover {
+    background-color: #45a049;
+} 
+
+.admin-main-content {
+    flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.admin-main-content h2 {
+   font-size: 1.5em;
+}

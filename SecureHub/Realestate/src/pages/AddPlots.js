@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { addPlot } from '../services/plot';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import React, { useState } from "react";
+import { addPlot } from "../services/plot";
+import "./AddPlots.css"; 
 
 const AddPlots = () => {
   const [status, setStatus] = useState("Add Plot");
   const [newPlot, setNewPlot] = useState({
-    size: '',
-    location: '',
+    size: "",
+    location: "",
     electricityAvailable: false,
-    ownerName: '',
-    societyId: '',
-    owner: '',
+    ownerName: "",
+    societyId: "",
+    owner: "",
   });
-
-  const navigate = useNavigate();  // Use useNavigate hook
 
   const handleAddPlot = async (e) => {
     e.preventDefault();
@@ -21,31 +19,27 @@ const AddPlots = () => {
 
     try {
       await addPlot(newPlot);
-      alert('Plot added successfully!');
+      alert("Plot added successfully!");
       setStatus("Add Plot");
 
-      // Redirect to the society owner dashboard after adding the plot
-      navigate('/society-owner-dashboard');  // Use navigate to redirect
-
       setNewPlot({
-        size: '',
-        location: '',
+        size: "",
+        location: "",
         electricityAvailable: false,
-        ownerName: '',
-        societyId: '',
-        owner: '',
+        ownerName: "",
+        societyId: "",
+        owner: "",
       });
     } catch (error) {
-      console.error('Error adding plot:', error);
+      console.error("Error adding plot:", error);
       setStatus("Add Plot");
     }
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Society Owner Dashboard</h1>
-      <h2>Add Plot</h2>
-      <form onSubmit={handleAddPlot}>
+    <div className="add-plot-container">
+      <form className="add-plot-form" onSubmit={handleAddPlot}>
+        <h2>Add Plot</h2>
         <input
           type="text"
           placeholder="Size"
@@ -53,7 +47,6 @@ const AddPlots = () => {
           onChange={(e) => setNewPlot({ ...newPlot, size: e.target.value })}
           required
         />
-        <br />
         <input
           type="text"
           placeholder="Location"
@@ -66,10 +59,11 @@ const AddPlots = () => {
           <input
             type="checkbox"
             checked={newPlot.electricityAvailable}
-            onChange={(e) => setNewPlot({ ...newPlot, electricityAvailable: e.target.checked })}
+            onChange={(e) =>
+              setNewPlot({ ...newPlot, electricityAvailable: e.target.checked })
+            }
           />
         </label>
-        <br />
         <input
           type="text"
           placeholder="Owner Name"
@@ -77,7 +71,6 @@ const AddPlots = () => {
           onChange={(e) => setNewPlot({ ...newPlot, ownerName: e.target.value })}
           required
         />
-        <br />
         <input
           type="text"
           placeholder="Society ID"
@@ -85,7 +78,6 @@ const AddPlots = () => {
           onChange={(e) => setNewPlot({ ...newPlot, societyId: e.target.value })}
           required
         />
-        <br />
         <input
           type="text"
           placeholder="Owner Address"
@@ -93,12 +85,8 @@ const AddPlots = () => {
           onChange={(e) => setNewPlot({ ...newPlot, owner: e.target.value })}
           required
         />
-        <br />
         <button type="submit">{status}</button>
       </form>
-
-      <button onClick={() => navigate('/society-owner-dashboard')}>Go to Dashboard</button>
-
     </div>
   );
 };

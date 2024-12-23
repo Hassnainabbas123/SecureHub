@@ -1,0 +1,61 @@
+/* Overall container for the Admin Stats */
+.admin-stats-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    
+  }
+  
+  /* Page Title */
+  .admin-stats-container h1 {
+    text-align: center;
+    color: #27ae60;;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  /* Graph container */
+  .stats-graphs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+  }
+  
+  /* Individual graph card */
+  .graph-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Graph Titles */
+  .graph-card h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  /* Loading Message */
+  .loading-message {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+  }
+  
