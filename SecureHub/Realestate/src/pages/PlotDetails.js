@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getPlotById, checkOwnership } from '../services/plot';
 import { useNavigate, useParams } from 'react-router-dom';
+import './PlotDetails.css'; 
 
 const PlotDetails = () => {
   const { plotId } = useParams();
@@ -16,24 +17,20 @@ const PlotDetails = () => {
           navigate('/login');
           return;
         }
-      
-        if (!user || !user.wallet) {
-            alert('Create a wallet  first.');
-            navigate('/userdashboard');
-            return;
-          }
 
+        if (!user || !user.wallet) {
+          alert('Create a wallet first.');
+          navigate('/userdashboard');
+          return;
+        }
 
         const res = await checkOwnership(user.email); 
-        // console.log(hasTokens);
-        // Use email from localStorage
         if (!res.hasTokens) {
           alert('You must own tokens to view plot details.');
           navigate('/userdashboard');
           return;
         }
 
-        
         const data = await getPlotById(plotId);
         setPlot(data.serializedPlot);
       } catch (error) {
@@ -44,21 +41,21 @@ const PlotDetails = () => {
   }, [plotId, navigate]);
 
   return (
-    <div>
-      <h1>Plot Details</h1>
+    <div className="plot-details-container">
+      <h1 className="plot-details-header">Plot Details</h1>
       {plot ? (
         <div>
-          <p>Size: {plot.size}</p>
-          <p>Location: {plot.location}</p>
-          <p>Electricity Available: {plot.electricityAvailable ? 'Yes' : 'No'}</p>
-          <p>Owner Name: {plot.ownerName}</p>
-          <p>Society ID: {plot.societyId}</p>
-          <p>Owner: {plot.owner}</p>
+          <p className="plot-details">Size: <span>{plot.size}</span></p>
+          <p className="plot-details">Location: <span>{plot.location}</span></p>
+          <p className="plot-details">Electricity Available: <span>{plot.electricityAvailable ? 'Yes' : 'No'}</span></p>
+          <p className="plot-details">Owner Name: <span>{plot.ownerName}</span></p>
+          <p className="plot-details">Society ID: <span>{plot.societyId}</span></p>
+          <p className="plot-details">Owner: <span>{plot.owner}</span></p>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className="plot-details">Loading...</p>
       )}
-      <button onClick={() => navigate('/userdashboard')}>Back to Dashboard</button>
+      <button className="plot-details-button" onClick={() => navigate('/plots')}>Back to Plot List</button>
     </div>
   );
 };

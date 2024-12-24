@@ -23,11 +23,13 @@
 }
 
 .dashboard-menu-item {
+  display: flex; /* Added to align icon and text */
+  align-items: center; /* Center icon and text vertically */
   margin: 15px 0;
   padding: 10px;
   background-color: #006600;
   border-radius: 5px;
-  text-align: center;
+  text-align: left; /* Align text to the left */
   cursor: pointer;
   color: #fff;
 }
@@ -36,7 +38,15 @@
   background-color: #008000;
 }
 
+.dashboard-menu-icon {
+  margin-right: 10px; /* Space between icon and text */
+  font-size: 18px; /* Icon size */
+}
+
 .dashboard-main {
   flex: 1;
   padding: 20px;
+}
+.dashboard-main p{
+  text-align: center;
 }

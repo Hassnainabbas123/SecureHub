@@ -114,7 +114,7 @@ const UserDashboard = () => {
   <FaPoll style={{ marginRight: '10px' }} /> My Polls
 </button>
         <button onClick={() => navigate("/plots")}>
-          <FaHome style={{ marginRight: "10px" }} /> Plot Details
+          <FaHome style={{ marginRight: "10px" }} /> Plot List
         </button>
         <button onClick={() => navigate("/login")}>
           <FaSignOutAlt style={{ marginRight: "10px" }} /> Logout

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { getPlotsBySocietyId, getAllPlots } from '../services/plot';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { getPlotsBySocietyId, getAllPlots } from "../services/plot";
+import { useParams, useNavigate } from "react-router-dom";
+import "./PlotList.css"; // Import CSS file
 
 const SocietyPlots = () => {
   const { societyId } = useParams(); // Optional parameter for societyId
   const [plots, setPlots] = useState([]); // All plots
   const [filteredPlots, setFilteredPlots] = useState([]); // Filtered plots based on search
-  const [searchQuery, setSearchQuery] = useState(''); // Search input
+  const [searchQuery, setSearchQuery] = useState(""); // Search input
 
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const SocietyPlots = () => {
         setPlots(data.plots);
         setFilteredPlots(data.plots); // Initialize filteredPlots
       } catch (error) {
-        console.error('Error fetching plots:', error);
+        console.error("Error fetching plots:", error);
       }
     };
     fetchPlots();
@@ -36,9 +37,9 @@ const SocietyPlots = () => {
     setSearchQuery(query);
 
     if (query) {
-      const filtered = plots.filter(
-        (plot) => plot.plotId.toString().toLowerCase().includes(query) 
-          );
+      const filtered = plots.filter((plot) =>
+        plot.plotId.toString().toLowerCase().includes(query)
+      );
       setFilteredPlots(filtered);
     } else {
       setFilteredPlots(plots); // Reset to all plots if query is empty
@@ -46,27 +47,24 @@ const SocietyPlots = () => {
   };
 
   return (
-    <div>
-      <h1>{societyId ? `Plots in Society ${societyId}` : 'All Plots'}</h1>
+    <div className="society-plots-container">
+      <h1 className="society-plots-header">
+        {societyId ? `Plots in Society ${societyId}` : "All Plots"}
+      </h1>
 
       {/* Search Box */}
-      <div style={{ marginBottom: '20px' }}>
+      <div className="society-plots-search-container">
         <input
           type="text"
-          placeholder="Search by Plot ID "
+          className="society-plots-search-input"
+          placeholder="Search by Plot ID"
           value={searchQuery}
           onChange={handleSearchChange}
-          style={{
-            padding: '10px',
-            width: '300px',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
-          }}
         />
       </div>
 
       {/* Plot Table */}
-      <table>
+      <table className="society-plots-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -79,41 +77,42 @@ const SocietyPlots = () => {
           {filteredPlots.length > 0 ? (
             filteredPlots.map((plot) => (
               <tr key={plot.plotId}>
-                <td
-                  onClick={() => navigate(`/plot/${plot.plotId}`)}
-                  style={{
-                    cursor: 'pointer',
-                    color: 'blue',
-                    textDecoration: 'underline',
-                  }}
-                >
-                  {plot.plotId}
+                <td>
+                  <button
+                    onClick={() => navigate(`/plot/${plot.plotId}`)}
+                    className="society-plots-link"
+                  >
+                    {plot.plotId}
+                  </button>
                 </td>
-                <td
-                  onClick={() => navigate(`/society/${plot.societyId}`)}
-                  style={{
-                    cursor: 'pointer',
-                    color: 'blue',
-                    textDecoration: 'underline',
-                  }}
-                >
-                  {plot.societyId || 'N/A'}
+                <td>
+                  <button
+                    onClick={() => navigate(`/plot/${plot.plotId}`)}
+                    className="society-plots-link"
+                  >
+                    {plot.societyId}
+                  </button>
                 </td>
                 <td>{plot.location}</td>
-                <td>{plot.electricityAvailable ? 'Yes' : 'No'}</td>
+                <td>{plot.electricityAvailable ? "Yes" : "No"}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="4" style={{ textAlign: 'center' }}>
+              <td colSpan="4" className="society-plots-no-results">
                 No plots found for the given search.
               </td>
             </tr>
           )}
         </tbody>
       </table>
-      <button onClick={() => navigate('/userdashboard')}>Back to Dashboard</button>
 
+      <button
+        className="society-plots-back-button"
+        onClick={() => navigate("/userdashboard")}
+      >
+        Back to Dashboard
+      </button>
     </div>
   );
 };

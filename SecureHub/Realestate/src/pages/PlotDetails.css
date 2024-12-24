@@ -1,0 +1,67 @@
+/* PlotDetails.css */
+
+/* Container Styling */
+.plot-details-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  /* Header Styling */
+  .plot-details-header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4a90e2;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Plot Details Styling */
+  .plot-details {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+  }
+  
+  .plot-details span {
+    font-weight: bold;
+    color: #222;
+  }
+  
+  /* Button Styling */
+  .plot-details-button {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .plot-details-button:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+  }
+  
+  /* Loading Text Styling */
+  .plot-details p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 2rem;
+  }
+  
