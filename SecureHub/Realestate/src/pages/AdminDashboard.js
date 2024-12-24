@@ -11,7 +11,7 @@ const AdminPanel = () => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   }; 
-  
+
   return (
     <div className="admin-panel">
       {/* Sidebar */}
@@ -25,7 +25,7 @@ const AdminPanel = () => {
             Recent Transactions
           </button>
           <button onClick={() => handleOptionClick('stats')} className="admin-sidebar-button">
-            States
+            Stats
           </button>
           <button onClick={() => handleOptionClick('feedback')} className="admin-sidebar-button">
             Feedback

@@ -88,7 +88,7 @@ const AdminStats = () => {
 
   return (
     <div className="admin-stats-container">
-      <h1>Transaction States</h1>
+      <h1>Transaction Stats</h1>
       {transactions.length === 0 ? (
         <p className="loading-message">Loading transactions...</p>
       ) : (
